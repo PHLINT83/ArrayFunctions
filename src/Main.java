@@ -1,24 +1,27 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class Main<T> {
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         System.out.print("Введите размер массива: ");
         int n = kb.nextInt();
-        int[] arr = new int[n];
+        Integer[] arr = new Integer[n];
 
         FillRand(arr);
         Print(arr);
-        Sort(arr);
+        //Sort(arr);
         Print(arr);
 
-        int[] brr = new int[n];
+        Double[] brr = new Double[n];
         FillRand(brr);
         Print(brr);
+
+        Character[] c_arr = new Character[]{'H', 'e', 'l', 'l', 'o'};
+        Print(c_arr);
     }
 
-        static void FillRand(int[] arr)
+        static void FillRand(Integer[] arr)
         {
             Random rand = new Random(0);
             for (int i = 0; i < arr.length; i++)
@@ -26,7 +29,16 @@ public class Main {
                 arr[i] = rand.nextInt(100);
             }
         }
-        static void Print(int[] arr)
+
+    static void FillRand(Double[] arr)
+    {
+        Random rand = new Random(0);
+        for (int i = 0; i < arr.length; i++)
+        {
+            arr[i] = rand.nextDouble(100);
+        }
+    }
+        static<T> void Print(T[] arr)
         {
         for (int i = 0; i < arr.length; i++)
         {
@@ -34,19 +46,27 @@ public class Main {
         }
         System.out.println();
     }
-     static void Sort(int[] arr)
+    static <T> T Sum(T[] arr)
+    {
+        T sum = T();
+        for(int i = 0; i< arr.length; i++)
+        {
+            sum+=arr[i];
+        }
+        return sum;
+    }
+     static<T> void Sort(T[] arr)
      {
         for (int i = 0; i < arr.length; i++)
         {
             for(int j = i + 1; j < arr.length; j++)
             {
-                if(arr[j] < arr[i])
+                /*if(arr[j] < arr[i])
                 {
-                        int buffer = arr[i];
+                        T buffer = arr[i];
                         arr[i] = arr[j];
                         arr[j] = buffer;
-                }
+                */}
             }
         }
      }
-}
